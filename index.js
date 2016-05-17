@@ -19,7 +19,7 @@ bot.startRTM(function (err, bot, payload) {
 })
 
 controller.on('bot_channel_join', function (bot, message) {
-  bot.reply(message, "I'm here!")
+  bot.reply(message, "At your service.")
 })
 
 controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
@@ -27,8 +27,7 @@ controller.hears(['hello', 'hi'], ['direct_mention'], function (bot, message) {
 })
 
 controller.hears(['hello', 'hi'], ['direct_message'], function (bot, message) {
-  bot.reply(message, 'Hello.')
-  bot.reply(message, 'It\'s nice to talk to you directly.')
+  bot.reply(message, 'Hello, it\'s nice to talk to you directly.')
 })
 
 controller.hears('.*', ['mention'], function (bot, message) {
@@ -44,7 +43,7 @@ controller.hears('help', ['direct_message', 'direct_mention'], function (bot, me
   bot.reply(message, help)
 })
 
-controller.hears(['please tell nam'], 'direct_message,direct_mention,mention', function(bot, message) {
+controller.hears(['please tell nam'], ['direct_message', 'direct_mention'], function(bot, message) {
   bot.reply(message,
       '<@namvo>,' + message.text.replace('please tell nam',''));
 });
@@ -69,5 +68,5 @@ controller.hears(['attachment'], ['direct_message', 'direct_mention'], function 
 })
 
 controller.hears('.*', ['direct_message', 'direct_mention'], function (bot, message) {
-  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t understand. \n')
+  bot.reply(message, 'Sorry <@' + message.user + '>, I don\'t comprehend. \n')
 })
